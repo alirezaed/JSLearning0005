@@ -31,14 +31,14 @@ function Data() {
 
     this.like=(id)=>{
         const elIndex = this.comments.findIndex(c=> c.id === id);
-        if (id > 0){
+        if (id >= 0){
             this.comments[elIndex].point++;
         }
     }
 
     this.dislike=(id)=>{
         const elIndex = this.comments.findIndex(c=> c.id === id);
-        if (id > 0){
+        if (id >= 0){
             this.comments[elIndex].point--;
         }
     }
@@ -54,40 +54,38 @@ function Data() {
     this.render = function () {
       // const container = document.createElement('div');
       // container.style.maxWidth = "800px";
-  
-      const container = getBuilder("div")
+      rootElement.innerHTML="";
+    const container = getBuilder("div")
         .style("maxWidth", "800px")
         .appendTo(rootElement)
         .build();
   
-      data.comments.forEach(function (comment, index) {
+    const createComment=function (comment, index) {
         const child = getBuilder("div")
-          .style("border", "1px solid blue")
-          .style("width", "100%")
-          .style("height", "100px")
-          .style("tableLayout", "fixed")
-          .style("display", "table")
-          .build();
-  
+            .style("border", "1px solid blue")
+            .style("width", "100%")
+            .style("height", "100px")
+            .style("tableLayout", "fixed")
+            .style("display", "table")
+            .build();
+    
         //create add and delete button
         const buttonDiv = getBuilder("div").style("float", "right").style("margin", "10px 10px").build();
         buttonDiv.display = "table-cell";
-       function handleLike (){
-            data.like(comment.id);
-            this.render();
         
-
-       }
         //add button
         const addButton = getBuilder("i").appendTo(buttonDiv).build();
         addButton.className="fa fa-thumbs-up";
-        addButton.addEventListener("click",handleLike);
-  
+        addButton.addEventListener("click",()=>{
+            data.like(comment.id);
+            this.render();
+        });
+    
         
         //point
         const pointSpan = getBuilder("span").text(comment.point).style("padding", "0px 10px 0px 10px").appendTo(buttonDiv).build();
         pointSpan.id = index;
-  
+    
         
         //delete button
         const deleteButton = getBuilder("i").appendTo(buttonDiv).build();
@@ -106,14 +104,15 @@ function Data() {
         imgDiv.appendChild(img);
         child.appendChild(imgDiv);
         //create text
-  
+    
         const span = getBuilder("span").build();
         span.display = "table-cell";
         span.textContent = comment.text;
         child.appendChild(span);
-  
+    
         container.appendChild(child);
-      });
+        }
+      data.comments.forEach(createComment.bind(this));
   
       //rootElement.appendChild(container);
     };
