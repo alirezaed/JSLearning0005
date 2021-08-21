@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="react.development.js" ></script>
+    <script src="react-dom.development.js" ></script>
+    <script src="babel.min.js" ></script>
+</head>
+<body>
+
+    <div id="root">
+
+    </div>
+    <script type="text/babel">
+    
+        //class 
+        //function
+
+
+        //props 
+        //state
+
+
+        class Comment extends React.Component{
+            
+
+            render(){
+                console.log(this.props);
+                return <div style={{border:'1px solid red',padding:'10px'}} >New comment:{this.props.fullname}</div>;
+            }
+        }
+
+        function CommentFunction(props){
+            
+            console.log(props);
+            return <div style={{border:'1px solid blue',padding:'10px'}} >New comment:{props.fullname}</div>;
+        }
+
+
+
+        const jsx = <div>
+                <Comment fullname="ali" />
+                <CommentFunction fullname="reza" />
+                <Comment fullname="hasan"/>
+            </div>
+
+
+        
+
+
+
+
+        ReactDOM.render(jsx,document.getElementById('root'));
+
+        
+    
+    
+    </script>
+</body>
+</html>

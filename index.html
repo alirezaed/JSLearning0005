@@ -4,14 +4,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="react.development.js" ></script>
+    <script src="react-dom.development.js" ></script>
+    <script src="babel.min.js" ></script>
 </head>
 <body>
 
-    <div id="root"></div>
+    <div id="root">
 
+    </div>
+    <script type="text/babel">
+    
+        // const first = React.createElement('div',{},"This is first div");
+
+        // const li1 = React.createElement('li',{},"This is the first");
+        // const li2 = React.createElement('li',{},"This is the second");
+
+
+        // const ol = React.createElement('ol',{
+        //     className:'xx',
+        //     style:{
+        //         backgroundColor:'blue',
+        //         color:'white'
+        //     }
+        // },li1,li2);
+
+        //JSX
+        
+        //React.createElement('div',{},"This is first div");
+
+        const li1 = <li>This is the first</li>
+        const li2 = <li>This {gets() + asd} second</li>
+        const ol = <ol style={{backgroundColor:'blue',color:'white'}} >
+                {li1}
+            </ol> 
+
+        
+        //class 
+        //function
+
+        
+
+
+
+
+        ReactDOM.render(ol,document.getElementById('root'));
+
+        
     
     
-    <script src="./app5-2.js"></script>
+    </script>
 </body>
 </html>
